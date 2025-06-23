@@ -91,7 +91,7 @@ export function GucciForm() {
             const capture = await actions.order.capture();
             alert(`🎉 Payment Success! Thanks, ${capture.payer.name.given_name}`);
             handlePaymentSuccess(capture);
-          } catch (error) {
+    } catch (error) {
             console.error('Payment capture error:', error);
             setSubmitStatus('error');
           }
@@ -105,7 +105,7 @@ export function GucciForm() {
     document.body.appendChild(script);
   }, [isFormValid, paymentCompleted, isPayPalReady]);
 
-
+  
   const handleImageSelect = (category: 'kids' | 'ladies' | 'mens', image: string) => {
     const itemKey = `${category}-${image}`;
     const isSelected = selectedItems.some(item => item.category === category && item.image === image);
