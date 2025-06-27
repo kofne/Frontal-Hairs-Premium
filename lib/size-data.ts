@@ -1,52 +1,41 @@
-import { CategoryData } from '@/types/form';
+﻿export const frontalHairImages = [
+  "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg", "7.jpg", "8.jpg", "9.jpg", "10.png",
+  "11.jpg", "12.png", "13.jpg", "14.jpg", "15.jpg", "16.jpg", "17.jpg", "18.jpg", "19.jpg", "20.jpg",
+  "21.jpg", "22.jpg", "23.jpg", "24.jpg", "25.jpg", "26.jpg", "27.jpg", "28.png", "29.jpg", "30.jpg",
+  "31.jpg", "32.jpg", "33.jpg", "34.jpg", "35.jpg", "36.jpg", "37.jpg", "38.jpg", "39.jpg", "40.jpg",
+  "41.png", "42.jpg", "43.jpg", "44.jpg", "45.jpg", "46.jpg", "47.jpg", "48.jpg", "49.jpg", "51.jpg",
+  "52.jpg", "53.jpg", "54.jpg", "55.jpg", "56.jpg", "57.jpg", "58.jpg", "59.jpg", "60.jpg", "61.jpg",
+  "62.jpg", "63.jpg", "64.jpg", "65.jpg", "66.jpg", "67.jpg", "68.jpg", "69.jpg", "70.jpg", "71.jpg",
+  "72.jpg", "73.jpg", "76.jpg", "77.jpg", "81.jpg", "82.jpg", "83.jpg", "84.jpg", "85.jpg", "86.jpg",
+  "87.jpg", "88.jpg", "89.jpg", "90.jpg", "92.png", "93.jpg", "94.jpg", "95.jpg", "96.jpg", "97.jpg",
+  "98.jpg", "99.jpg", "100.jpg", "101.jpg", "102.jpg", "103.jpg", "104.jpg", "105.jpg", "106.jpg", "107.png",
+  "108.jpg", "109.jpg", "110.jpg", "111.jpg", "112.jpg", "113.jpg", "114.jpg", "115.jpg", "117.jpg", "118.jpg",
+  "119.jpg", "120.jpg", "121.jpg", "122.jpg", "123.jpg", "124.jpg", "125.jpg", "126.jpg", "127.png", "128.jpg",
+  "129.jpg", "130.jpg", "131.jpg", "132.jpg", "133.jpg", "134.jpg", "135.jpg", "136.jpg", "137.jpg", "138.jpg",
+  "139.jpg", "140.jpg", "141.jpg", "142.jpg", "143.jpg", "144.jpg", "145.jpg", "146.jpg", "147.jpg", "148.jpg",
+  "149.jpg", "150.jpg", "151.jpg", "152.jpg", "153.jpg", "154.png", "155.jpg", "156.jpg", "156.png", "157.jpg",
+  "158.png", "159.png", "160.jpg", "161.jpg", "162.jpg", "163.jpg", "164.jpg", "165.jpg", "166.jpg", "167.jpg",
+  "168.jpg", "169.jpg", "170.jpg", "171.jpg", "172.png", "173.jpg", "174.jpg", "175.jpg", "176.jpg", "177.jpg",
+  "178.jpg", "179.jpg", "180.jpg", "181.jpg", "182.jpg", "183.jpg", "184.jpg", "185.jpg", "186.jpg", "187.jpg",
+  "188.jpg", "189.jpg", "190.jpg", "191.jpg", "192.jpg", "193.jpg", "194.jpg", "195.jpg", "196.jpg", "197.jpg",
+  "198.jpg", "199.jpg", "200.jpg", "201.jpg", "202.jpg", "203.jpg", "204.jpg", "205.jpg", "206.jpg", "207.jpg",
+  "208.jpg", "209.jpg", "210.jpg", "211.jpg", "212.jpg", "213.jpg", "214.jpg", "215.jpg", "216.jpg", "217.jpg",
+  "218.jpg", "219.jpg", "220.jpg", "221.jpg", "222.jpg", "223.jpg", "224.jpg", "225.jpg", "226.jpg", "227.jpg",
+  "228.jpg", "229.jpg", "230.jpg", "231.jpg", "232.jpg", "233.jpg", "234.jpg", "235.jpg", "236.jpg", "237.jpg",
+  "238.jpg", "239.jpg", "240.jpg", "241.jpg", "242.jpg", "243.jpg", "244.jpg", "245.jpg", "246.jpg", "247.jpg",
+  "248.jpg", "249.jpg", "250.jpg", "251.jpg", "252.jpg", "253.jpg", "254.jpg", "255.jpg", "256.jpg", "257.jpg",
+  "258.jpg", "259.jpg", "260.jpg", "261.jpg", "262.jpg", "263.jpg", "264.jpg", "265.jpg", "266.jpg", "267.jpg",
+  "268.jpg", "269.jpg", "270.jpg", "271.jpg", "272.jpg", "273.jpg", "274.jpg", "275.jpg", "276.jpg", "277.jpg",
+  "278.jpg", "279.jpg", "280.jpg", "281.jpg", "282.jpg", "283.jpg", "284.jpg", "285.jpg", "286.jpg", "287.jpg",
+  "288.jpg", "289.jpg", "290.jpg", "291.jpg", "292.jpg", "293.jpg", "294.jpg", "295.jpg", "296.jpg", "297.jpg",
+  "298.jpg", "299.jpg", "300.jpg", "301.jpg", "302.jpg", "303.jpg", "304.jpg", "305.jpg", "306.jpg", "307.jpg",
+  "308.jpg", "309.jpg", "310.jpg", "311.jpg", "312.jpg", "313.jpg", "314.jpg", "315.jpg", "316.jpg", "317.jpg",
+  "318.jpg", "319.jpg", "320.jpg", "321.jpg", "322.jpg", "323.jpg", "324.jpg", "325.jpg"
+];
 
-export const sizeData: Record<string, CategoryData> = {
-  kids: {
-    name: 'Kids',
-    folder: 'Gucci Kids No Background',
-    images: Array.from({ length: 34 }, (_, i) => `Kid ${i + 1}.png`),
-    sizes: [
-      { value: '2T', label: '2T', details: 'Age: 1-2 yrs | Height: 84-91 cm | Chest: 52-53 cm | Waist: 51-52 cm' },
-      { value: '3T', label: '3T', details: 'Age: 2-3 yrs | Height: 91-98 cm | Chest: 53-55 cm | Waist: 52-53 cm' },
-      { value: '4T', label: '4T', details: 'Age: 3-4 yrs | Height: 98-104 cm | Chest: 55-56 cm | Waist: 53-54 cm' },
-      { value: '5-6', label: '5-6', details: 'Age: 5-6 yrs | Height: 110-116 cm | Chest: 57-59 cm | Waist: 54-55 cm' },
-      { value: '7-8', label: '7-8', details: 'Age: 7-8 yrs | Height: 122-128 cm | Chest: 60-64 cm | Waist: 56-58 cm' },
-      { value: '9-10', label: '9-10', details: 'Age: 9-10 yrs | Height: 134-140 cm | Chest: 66-70 cm | Waist: 59-61 cm' },
-      { value: '11-12', label: '11-12', details: 'Age: 11-12 yrs | Height: 146-152 cm | Chest: 72-76 cm | Waist: 62-64 cm' },
-      { value: '13-14', label: '13-14', details: 'Age: 13-14 yrs | Height: 158-164 cm | Chest: 78-84 cm | Waist: 65-67 cm' },
-      { value: '15-16', label: '15-16', details: 'Age: 15-16 yrs | Height: 170-176 cm | Chest: 86-92 cm | Waist: 68-70 cm' },
-    ]
-  },
-  ladies: {
-    name: 'Ladies',
-    folder: 'Gucci Ladies No Background',
-    images: Array.from({ length: 46 }, (_, i) => i + 1)
-      .filter(n => n < 15 || n > 19)
-      .map(n => `G${n}.png`),
-    sizes: [
-      { value: 'XS', label: 'XS', details: 'US: 2 | UK: 6 | EU: 34 | Chest: 76-80 cm | Waist: 60-64 cm | Hips: 84-88 cm' },
-      { value: 'S', label: 'S', details: 'US: 4 | UK: 8 | EU: 36 | Chest: 80-84 cm | Waist: 64-68 cm | Hips: 88-92 cm' },
-      { value: 'M', label: 'M', details: 'US: 6 | UK: 10 | EU: 38 | Chest: 84-88 cm | Waist: 68-72 cm | Hips: 92-96 cm' },
-      { value: 'L', label: 'L', details: 'US: 8 | UK: 12 | EU: 40 | Chest: 88-94 cm | Waist: 72-78 cm | Hips: 96-102 cm' },
-      { value: 'XL', label: 'XL', details: 'US: 10 | UK: 14 | EU: 42 | Chest: 94-100 cm | Waist: 78-84 cm | Hips: 102-108 cm' },
-      { value: 'XXL', label: 'XXL', details: 'US: 12 | UK: 16 | EU: 44 | Chest: 100-106 cm | Waist: 84-90 cm | Hips: 108-114 cm' },
-      { value: '3XL', label: '3XL', details: 'US: 14 | UK: 18 | EU: 46 | Chest: 106-112 cm | Waist: 90-96 cm | Hips: 114-120 cm' },
-      { value: '4XL', label: '4XL', details: 'US: 16 | UK: 20 | EU: 48 | Chest: 112-118 cm | Waist: 96-102 cm | Hips: 120-126 cm' },
-    ]
-  },
-  mens: {
-    name: 'Mens',
-    folder: 'Mens',
-    images: Array.from({ length: 36 }, (_, i) => `M${i + 1}.png`),
-    sizes: [
-      { value: 'XS', label: 'XS', details: 'Chest: 84-88 cm | Waist: 70-74 cm | Hips: 84-88 cm | Height: 160-170 cm' },
-      { value: 'S', label: 'S', details: 'Chest: 88-94 cm | Waist: 74-80 cm | Hips: 88-94 cm | Height: 165-175 cm' },
-      { value: 'M', label: 'M', details: 'Chest: 94-100 cm | Waist: 80-86 cm | Hips: 94-100 cm | Height: 170-180 cm' },
-      { value: 'L', label: 'L', details: 'Chest: 100-106 cm | Waist: 86-92 cm | Hips: 100-106 cm | Height: 175-185 cm' },
-      { value: 'XL', label: 'XL', details: 'Chest: 106-112 cm | Waist: 92-98 cm | Hips: 106-112 cm | Height: 180-190 cm' },
-      { value: 'XXL', label: 'XXL', details: 'Chest: 112-118 cm | Waist: 98-104 cm | Hips: 112-118 cm | Height: 185-195 cm' },
-      { value: '3XL', label: '3XL', details: 'Chest: 118-124 cm | Waist: 104-110 cm | Hips: 118-124 cm | Height: 185-200 cm' },
-      { value: '4XL', label: '4XL', details: 'Chest: 124-130 cm | Waist: 110-116 cm | Hips: 124-130 cm | Height: 185-205 cm' },
-    ]
-  }
-}; 
+export const hairData = {
+  name: 'Frontal Hairs',
+  folder: 'Frontal Hairs',
+  images: frontalHairImages,
+  price: 250
+};

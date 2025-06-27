@@ -1,7 +1,7 @@
 "use client"
 
-import { GucciForm } from '@/components/gucci-form';
+import { HairForm } from '@/components/gucci-form';
 
 export default function Home() {
-  return <GucciForm />;
+  return <HairForm />;
 }
