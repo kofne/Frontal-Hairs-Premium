@@ -48,7 +48,7 @@ export function ReferralCreator() {
         setErrorMessage(data.error || 'Failed to create referral code')
         setStatus('error')
       }
-    } catch (error) {
+    } catch {
       setErrorMessage('Network error. Please try again.')
       setStatus('error')
     } finally {

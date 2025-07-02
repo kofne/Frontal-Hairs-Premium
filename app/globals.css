@@ -4,6 +4,94 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  background-image: url('/images/Background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-color: transparent !important;
+}
+
+/* Text shadow for better visibility against background image */
+.text-white {
+  text-shadow: 
+    2px 2px 4px rgba(0, 0, 0, 0.8),
+    0 0 10px rgba(255, 255, 255, 0.5),
+    0 0 20px rgba(255, 255, 255, 0.3),
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+
+.text-yellow-300 {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.text-yellow-400 {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.text-cyan-300 {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.text-cyan-400 {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.text-green-300 {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.text-green-400 {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.text-bright-blue {
+  color: #00BFFF;
+  text-shadow: 
+    2px 2px 4px rgba(0, 0, 0, 0.8),
+    0 0 10px rgba(0, 191, 255, 0.7),
+    0 0 20px rgba(0, 191, 255, 0.5),
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+
+.text-maroon {
+  color: #8B0000;
+  text-shadow: 
+    2px 2px 4px rgba(0, 0, 0, 0.8),
+    0 0 10px rgba(139, 0, 0, 0.7),
+    0 0 20px rgba(139, 0, 0, 0.5),
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 2px solid #8B0000;
+}
+
+.bg-dark-maroon {
+  background-color: #4A1C1C;
+  background: linear-gradient(135deg, #4A1C1C 0%, #2D0F0F 100%);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  border: 2px solid #6B2C2C;
+}
+
+.bg-contact-blue {
+  background: linear-gradient(135deg, #1E3A8A 0%, #3B82F6 50%, #60A5FA 100%);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  border: 2px solid #2563EB;
 }
 
 @layer utilities {
@@ -145,4 +233,12 @@ body {
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: #A0522D;
+}
+
+.bg-gradient-to-br,
+.bg-amber-50,
+.bg-red-50,
+.bg-brown-50 {
+  background: none !important;
+  background-color: transparent !important;
 }

@@ -2,12 +2,12 @@
 
 import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { frontalHairImages, hairData } from '@/lib/size-data';
 import { FormData, PayPalPaymentData } from '@/types/form';
-import { CheckCircle, AlertCircle, ShoppingBag, XCircle, Loader2 } from 'lucide-react';
+import { CheckCircle, ShoppingBag, XCircle, Loader2 } from 'lucide-react';
+import { PayPalButton } from './PayPalButton';
 
 export function HairForm() {
   const [formData, setFormData] = useState<Omit<FormData, 'selectedItems'>>({
@@ -17,91 +17,14 @@ export function HairForm() {
   });
   const [selectedImages, setSelectedImages] = useState<string[]>([]);
 
-  const [paymentCompleted, setPaymentCompleted] = useState(false);
-  const [paymentData, setPaymentData] = useState<PayPalPaymentData | null>(null);
+  const [paymentCompleted] = useState(false);
+  const [paymentData] = useState<PayPalPaymentData | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-  const [isPayPalReady, setIsPayPalReady] = useState(false);
 
   const maxQuantity = 10;
   const totalPrice = hairData.price;
   
-  const isFormValid = formData.name && formData.email && formData.deliveryAddress && selectedImages.length > 0;
-
-  useEffect(() => {
-    if (!isFormValid || paymentCompleted || isPayPalReady) return;
-
-    const script = document.createElement('script');
-    script.src = `https://www.paypal.com/sdk/js?client-id=${process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID}&currency=USD&intent=capture`;
-    script.setAttribute('data-sdk-integration-source', 'developer-studio');
-    script.addEventListener('load', () => {
-      setIsPayPalReady(true);
-      // @ts-ignore
-      paypal.Buttons({
-        createOrder: async () => {
-          try {
-            console.log('Attempting to create PayPal order with amount:', totalPrice);
-            
-            const res = await fetch('/api/create-order', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ amount: totalPrice }),
-            });
-            
-            console.log('Response status:', res.status);
-            console.log('Response headers:', Object.fromEntries(res.headers.entries()));
-            
-            // Get the raw response text first
-            const responseText = await res.text();
-            console.log('Raw response text:', responseText);
-            
-            let data;
-            try {
-              data = responseText ? JSON.parse(responseText) : {};
-            } catch (parseError) {
-              console.error('Failed to parse API response:', parseError);
-              console.error('Response text was:', responseText);
-              throw new Error(`Invalid API response format: ${responseText}`);
-            }
-            
-            console.log('Parsed API response data:', data);
-            
-            if (!res.ok) {
-              console.error('Create order API error:', data);
-              const errorMessage = data?.error || data?.message || `HTTP ${res.status}: ${res.statusText}`;
-              throw new Error(errorMessage);
-            }
-            
-            if (!data || !data.id) {
-              console.error('No order ID in response:', data);
-              throw new Error('Invalid order response - missing order ID');
-            }
-            
-            console.log('PayPal order created successfully:', data.id);
-            return data.id;
-          } catch (error) {
-            console.error('Error creating PayPal order:', error);
-            throw error;
-          }
-        },
-        onApprove: async (data: any, actions: any) => {
-          try {
-            const capture = await actions.order.capture();
-            alert(`🎉 Payment Success! Thanks, ${capture.payer.name.given_name}`);
-            handlePaymentSuccess(capture);
-    } catch (error) {
-            console.error('Payment capture error:', error);
-            setSubmitStatus('error');
-          }
-        },
-        onError: (err: any) => {
-          console.error('PayPal Error:', err);
-          setSubmitStatus('error');
-        },
-      }).render('#paypal-button-container');
-    });
-    document.body.appendChild(script);
-  }, [isFormValid, paymentCompleted, isPayPalReady]);
 
   
   const handleImageSelect = (image: string) => {
@@ -118,14 +41,7 @@ export function HairForm() {
     }
   };
 
-  const handlePaymentSuccess = (payment: any) => {
-    setPaymentCompleted(true);
-    setPaymentData({
-      orderID: payment.id,
-      payerID: payment.payer.payer_id,
-      paymentID: payment.purchase_units[0].payments.captures[0].id,
-    });
-  };
+
 
   const handleSubmit = async () => {
     if (!paymentCompleted) return;
@@ -141,7 +57,7 @@ export function HairForm() {
       });
       if (!response.ok) throw new Error('Submission failed');
       setSubmitStatus('success');
-    } catch (error) {
+    } catch {
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -149,19 +65,22 @@ export function HairForm() {
   };
 
   useEffect(() => {
-    if(paymentCompleted) {
-        handleSubmit();
-    }
+    // No longer auto-submit after payment; user must click the button
   }, [paymentCompleted]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-red-50 to-brown-50 p-4">
+    <div className="bg-gradient-to-br from-amber-50 via-red-50 to-brown-50 p-4">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-8">
-          <h1 className="text-4xl md:text-6xl font-bold text-brown-800 mb-4">💇‍♀️ Frontal Hair Collection</h1>
-          <p className="text-xl text-brown-600 max-w-3xl mx-auto">
-            Select up to 10 frontal hairs from our collection for a fixed price of <span className="font-bold text-red-600">${totalPrice}</span>.
-          </p>
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">💇‍♀️ Frontal Hair Collection</h1>
+          <div className="bg-dark-maroon max-w-4xl mx-auto">
+            <p className="text-2xl text-white font-semibold">
+              Select up to 10 frontal hairs from our collection for a fixed price of <span className="font-bold text-white">${totalPrice}</span>.
+            </p>
+            <p className="text-3xl text-white font-semibold mt-4">
+              Delivers in Gaborone, Botswana in 4-7 days, <span className="font-bold text-white">Free Shipping!</span>
+            </p>
+          </div>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8">
@@ -262,10 +181,14 @@ export function HairForm() {
                   <span className="text-brown-800">Total:</span>
                   <span className="text-red-600">${totalPrice}</span>
                 </div>
-                
-                {isFormValid && (
-                  <div id="paypal-button-container" className="mt-4"></div>
-                )}
+                <PayPalButton />
+                <button
+                  className={`mt-4 w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ${!paymentCompleted ? 'opacity-50 cursor-not-allowed' : ''}`}
+                  onClick={handleSubmit}
+                  disabled={!paymentCompleted || isSubmitting}
+                >
+                  {isSubmitting ? 'Submitting...' : 'Submit Order'}
+                </button>
                 
                 {submitStatus === 'success' && (
                   <div className="flex items-center gap-2 text-green-600 bg-green-50 p-3 rounded-lg">
